@@ -1,0 +1,303 @@
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mithra's Resume</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon"
+        href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;📑&lt;/text&gt;&lt;/svg&gt;">
+    <style>
+        :root {
+            --light-bg: #f5f6fa;
+            --light-text: #000000;
+            --light-accent: #3498db;
+            --dark-bg: #1a1a1a;
+            --dark-text: #ffffff;
+            --dark-accent: #64ffda;
+        }
+
+        [data-theme="light"] {
+            --bg: var(--light-bg);
+            --text: var(--light-text);
+            --accent: var(--light-accent);
+        }
+
+        [data-theme="dark"] {
+            --bg: var(--dark-bg);
+            --text: var(--dark-text);
+            --accent: var(--dark-accent);
+        }
+
+        [data-theme="dark"] #leetcode {
+            background-color: white;
+            /* Change background color to white in dark mode */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            transition: all 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Pattern */
+        .pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 48%, var(--accent) 49%, var(--accent) 51%, transparent 52%) 0 0/50px 50px;
+            opacity: 0.1;
+            animation: patternMove 20s linear infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            padding: 10px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Social Links */
+        .social-links {
+            position: fixed;
+            left: 40px;
+            /* Increased from 20px */
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .social-link {
+            color: var(--text);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateX(5px) scale(1.2);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 80px 20px 100px;
+            /* Increased left padding to account for social icons */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            transform: translateY(0);
+            transition: transform 0.5s ease;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            transform: translateY(0);
+            transition: transform 0.5s ease;
+        }
+
+        .resume-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+            z-index: 1;
+            /* Ensure it stays above the pattern */
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .resume-container iframe {
+            width: 101%;
+            height: 100%;
+            border: none;
+            display: block;
+            padding: -100px;
+        }
+
+        /* Animations */
+        @keyframes patternMove {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 50px 50px;
+            }
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            /*.social-links {*/
+            /*    left: 20px;*/
+            /*}*/
+
+            /*.container {*/
+            /*    padding: 20px 40px 20px 60px;*/
+            /*}*/
+
+            /*h1 {*/
+            /*    font-size: 2rem;*/
+            /*}*/
+            .social-links {
+                position: relative;
+                left: 0;
+                top: auto;
+                transform: translateY(0);
+                flex-direction: row;
+                justify-content: center;
+                gap: 15px;
+                margin-top: 20px;
+            }
+
+            .container {
+                padding: 20px;
+                display: block;
+                margin: 0;
+            }
+
+            header {
+                margin-bottom: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .resume-container {
+                max-height: 70vh;
+                margin-bottom: 30px;
+                padding: 10px;
+            }
+
+            /* Move buttons below the resume on mobile */
+            .download-btn,
+            .social-links {
+                position: relative;
+                z-index: 0;
+            }
+        }
+
+        .download-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+        }
+
+        .download-btn:hover {
+            background-color: #2980b9;
+        }
+
+        [data-theme="dark"] .download-btn {
+            background-color: #000000;
+        }
+
+        [data-theme="dark"] .download-btn:hover {
+            background-color: #64ffda;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Rest of the HTML remains the same -->
+    <div class="pattern"></div>
+
+    <button class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="social-links">
+        <a href="https://www.linkedin.com/in/mithra-jayaprakash" target="_blank" class="social-link"
+            style="color: var(--text);" onmouseover="this.style.color='#3498db'"
+            onmouseout="this.style.color='var(--text)'">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/mithuja12" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="mailto:work@mithrajayaprakash7@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+        
+    </div>
+    <a href="mithra_resume.pdf" class="download-btn" download="">
+        <i class="fas fa-file-pdf"></i>
+    </a>
+    <div class="container">
+        <header style="transform: translateY(0px);">
+            <h1>Mithra's Resume</h1>
+        </header>
+        <div class="resume-container">
+            <iframe src="mithra_resume.pdf#zoom=123&toolbar=0&navpanes=0&scrollbar=0"" title="Mithra's Resume"></iframe>
+        </div>
+
+    </div>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            themeToggle.innerHTML = newTheme === 'light' ?
+                '<i class="fas fa-moon"></i>' :
+                '<i class="fas fa-sun"></i>';
+        });
+
+        // Parallax Effect
+        window.addEventListener('scroll', () => {
+            const scroll = window.scrollY;
+            document.querySelector('header').style.transform = `translateY(${scroll * 0.5}px)`;
+            document.querySelector('.pdf-viewer').style.transform = `translateY(${scroll * 0.1}px)`;
+        });
+    </script>
+
+    <div id="my-app"></div>
+</body>
+
+</html>
